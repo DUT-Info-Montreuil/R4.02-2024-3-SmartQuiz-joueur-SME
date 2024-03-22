@@ -12,7 +12,11 @@ public class JoueurDTO {
     private String pseudo;
     private int anneeNaissance;
     private Langues languePref;
+
+    private String description;
     private List<String> centresDInteret;
+
+
 
     // private Statistiques statistiques
 
@@ -21,6 +25,7 @@ public class JoueurDTO {
         this.pseudo = pseudo;
         this.languePref = languePref;
         this.anneeNaissance = anneeNaissance;
+        this.description = null;
         this.centresDInteret = new ArrayList<>(Arrays.asList(centresInterets.split(",")));
         //this.statistiques = statistiques
     }
