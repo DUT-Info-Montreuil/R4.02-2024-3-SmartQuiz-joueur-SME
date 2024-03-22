@@ -3,13 +3,15 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.services.mocks;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.Utiles.Langues;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.entities.dto.JoueurDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.exceptions.DonneesSaisiesIncorrectesException;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.exceptions.JoueurIntrouvableException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.exceptions.PseudoNonUniqueException;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.services.interfaces.IServicesJoueur;
 
 import java.util.ArrayList;
 
-public class ServicesJoueur {
+public class ServicesJoueurMock implements IServicesJoueur {
     ArrayList<JoueurDTO> listeJoueurs;
-    public ServicesJoueur() {
+    public ServicesJoueurMock() {
         this.listeJoueurs = new ArrayList<>();
     }
 
@@ -25,7 +27,10 @@ public class ServicesJoueur {
 
         return j1;
     }
-    public ArrayList<JoueurDTO> getListeJoueurs() {
-        return listeJoueurs;
+
+    @Override
+    public boolean supprimerJoueur(String pseudo) throws JoueurIntrouvableException, DonneesSaisiesIncorrectesException {
+        return false;
     }
+
 }

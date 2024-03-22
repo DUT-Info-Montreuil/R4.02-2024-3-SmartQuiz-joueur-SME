@@ -56,6 +56,7 @@ public class ServicesJoueurImpl implements IServicesJoueur {
             return listeJoueurs.removeIf(joueur -> joueur.getPseudo().equals(pseudo));
         }
     }
-
-
+    public List<JoueurDTO> getListeJoueurs() {
+        return listeJoueurs;
+    }
 }
