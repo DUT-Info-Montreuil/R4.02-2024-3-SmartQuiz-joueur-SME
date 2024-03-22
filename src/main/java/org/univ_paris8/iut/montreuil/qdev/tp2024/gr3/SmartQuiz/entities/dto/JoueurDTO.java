@@ -85,4 +85,8 @@ public class JoueurDTO {
                 ", centresDInteret=" + centresDInteret +
                 '}';
     }
+
+    public Langues getLanguePref() {
+        return languePref;
+    }
 }
