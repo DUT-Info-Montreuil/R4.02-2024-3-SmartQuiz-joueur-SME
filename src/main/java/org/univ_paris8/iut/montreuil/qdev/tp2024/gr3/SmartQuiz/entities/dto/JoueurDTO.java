@@ -12,7 +12,6 @@ public class JoueurDTO {
     private String pseudo;
     private int anneeNaissance;
     private Langues languePref;
-
     private String description;
     private List<String> centresDInteret;
 
