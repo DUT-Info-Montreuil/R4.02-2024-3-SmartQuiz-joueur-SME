@@ -51,11 +51,16 @@ public class ServicesJoueurImpl implements IServicesJoueur {
     }
 
     @Override
-    public boolean supprimerJoueur(String pseudo) {
+    public boolean supprimerJoueur(String pseudo) throws JoueurIntrouvableException {
         synchronized (listeJoueurs) {
+            boolean joueurTrouve = listeJoueurs.stream().anyMatch(joueur -> joueur.getPseudo().equals(pseudo));
+            if (!joueurTrouve) {
+                throw new JoueurIntrouvableException("Aucun joueur avec le pseudo '" + pseudo + "' n'a été trouvé.");
+            }
             return listeJoueurs.removeIf(joueur -> joueur.getPseudo().equals(pseudo));
         }
     }
+
 
 
 }
