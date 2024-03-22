@@ -3,6 +3,7 @@ package org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.services.impl;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.Utiles.Langues;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.entities.dto.JoueurDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.exceptions.DonneesSaisiesIncorrectesException;
+import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.exceptions.JoueurIntrouvableException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.exceptions.PseudoNonUniqueException;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.services.interfaces.IServicesJoueur;
 
@@ -31,7 +32,7 @@ public class ServicesJoueurImpl implements IServicesJoueur {
     @Override
     public JoueurDTO ajouterJoueur(String prenom, String pseudo, int anneeNaissance, Langues langue, String centreInterets) throws PseudoNonUniqueException, DonneesSaisiesIncorrectesException {
         // Vérifier si les données saisies sont correctes
-        if (prenom == null || pseudo == null || langue == null || centreInterets == null) {
+        if (prenom == null || prenom.isEmpty() || pseudo == null || pseudo.isEmpty() || langue == null || centreInterets == null || centreInterets.isEmpty()) {
             throw new DonneesSaisiesIncorrectesException("Les données saisies sont incomplètes ou incorrectes.");
         }
 
@@ -49,6 +50,12 @@ public class ServicesJoueurImpl implements IServicesJoueur {
         }
     }
 
+    @Override
+    public boolean supprimerJoueur(String pseudo) {
+        synchronized (listeJoueurs) {
+            return listeJoueurs.removeIf(joueur -> joueur.getPseudo().equals(pseudo));
+        }
+    }
 
 
 }
