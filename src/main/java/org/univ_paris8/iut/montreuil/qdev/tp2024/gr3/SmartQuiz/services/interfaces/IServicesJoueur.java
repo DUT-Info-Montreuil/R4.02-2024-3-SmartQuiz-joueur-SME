@@ -10,8 +10,4 @@ public interface IServicesJoueur {
 
     JoueurDTO ajouterJoueur(String prenom, String pseudo, int anneeNaissance, Langues langue, String centreInterets)
             throws PseudoNonUniqueException, DonneesSaisiesIncorrectesException;
-
-    boolean supprimerJoueur(String pseudo)
-            throws JoueurIntrouvableException, DonneesSaisiesIncorrectesException;
-
 }

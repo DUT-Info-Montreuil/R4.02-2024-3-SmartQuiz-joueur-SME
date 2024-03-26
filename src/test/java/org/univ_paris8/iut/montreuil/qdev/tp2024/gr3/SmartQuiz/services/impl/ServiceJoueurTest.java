@@ -1,4 +1,5 @@
 package org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.services.impl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.Utiles.Langues;
 import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.entities.dto.JoueurDTO;
@@ -9,6 +10,7 @@ import org.univ_paris8.iut.montreuil.qdev.tp2024.gr3.SmartQuiz.services.mocks.Se
 
 import java.util.Arrays;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 public class ServiceJoueurTest {
@@ -25,11 +27,11 @@ public class ServiceJoueurTest {
         JoueurDTO joueurDTO = service.ajouterJoueur(prenom, pseudo, anneeNaissance, langue, centresInterets);
         //JoueurDTO joueurDTO1 = service.ajouterJoueur("riri", "riri21", 2003, Langues.english, "Sport,Musique");
 
-        assertEquals(prenom, joueurDTO.getPrenom());
-        assertEquals(pseudo, joueurDTO.getPseudo());
-        assertEquals(anneeNaissance, joueurDTO.getAnneeNaissance());
-        assertEquals(langue, joueurDTO.getLanguePref());
-        assertEquals(Arrays.asList("Sport", "Musique"), joueurDTO.getCentresDInteret());
+        Assert.assertEquals(prenom, joueurDTO.getPrenom());
+        Assert.assertEquals(pseudo, joueurDTO.getPseudo());
+        Assert.assertEquals(anneeNaissance, joueurDTO.getAnneeNaissance());
+        Assert.assertEquals(langue, joueurDTO.getLanguePref());
+        Assert.assertEquals(Arrays.asList("Sport", "Musique"), joueurDTO.getCentresDInteret());
 
     }
 
